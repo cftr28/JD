@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boda Joe & Elisa</title>
+    <title>Boda Josué & Diana</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@200;400;600&family=Tenor+Sans&family=Alex+Brush&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&display=swap" rel="stylesheet">
 
@@ -545,7 +545,7 @@
 
         .tarjeta-regalo-cafe { 
             background-color: #ffffff;
-            background-image: url('fondo4.png'); 
+            background-image: url('fondo1000.png'); 
             background-size: cover; 
             width: 100%; 
             max-width: 400px; 
@@ -653,7 +653,7 @@
         .btn-interactivo { display: inline-block; background-color: #8d7a64; color: white; padding: 12px 20px; border-radius: 25px; text-decoration: none; font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase; border: none; cursor: pointer; font-weight: 600; width: auto; min-width: 160px;}
 
         .seccion-contador { width: 100%; background-image: url('fondo5.png'); background-size: cover; background-position: center; padding: 60px 15px; display: flex; flex-direction: column; align-items: center; box-sizing: border-box; }
-        .capsula-tiempo { background-image: url('fondo6.png'); background-size: cover; background-position: center; width: 100%; max-width: 500px; padding: 30px 10px; border-radius: 50px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 40px; box-sizing: border-box; }
+        .capsula-tiempo { background-image: url('fondo100.png'); background-size: cover; background-position: center; width: 100%; max-width: 500px; padding: 30px 10px; border-radius: 50px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 40px; box-sizing: border-box; }
         .preparate { letter-spacing: 3px; font-size: 1.1rem; margin: 0; font-weight: 200; }
         .nos-vemos { letter-spacing: 2px; font-size: 0.65rem; margin: 5px 0 20px; opacity: 0.8; }
         .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; }
@@ -980,21 +980,106 @@
     display: block;
     object-fit: cover;
 }
+/* 1. Contenedor principal que ocupa toda la pantalla */
+#preloader {
+    position: fixed; /* O absolute, dependiendo de tu layout */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
 
+/* 2. Contenedor relativo para que el texto sepa dónde posicionarse */
+.contenedor-portada {
+    position: relative; /* CRUCIAL: Esto permite el posicionamiento absoluto dentro */
+    width: 100%;
+    height: 100%;
+}
+
+/* 3. La imagen de fondo (asegura que cubra el área) */
+.preloader-full {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen cubra sin deformarse */
+    display: block;
+}
+
+/* 4. El estilo y posición flotante del texto */
+.texto-tocar {
+    /* Posicionamiento absoluto respecto a .contenedor-portada */
+    position: absolute;
+    bottom: 40px; /* Distancia desde el borde inferior (ajústalo a tu gusto) */
+    left: 50%;
+    transform: translateX(-50%); /* Centrado horizontal perfecto */
+
+    /* Estilo visual para legibilidad */
+    color: white; /* O un color que contraste con tu imagen "2.png" */
+    font-family: sans-serif, Arial; /* Usa tu tipografía aquí */
+    font-size: 1.1rem;
+    text-align: center;
+    
+    /* Sombra de texto para asegurar contraste si la imagen es clara */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.7); 
+    
+    /* Asegura que el texto esté por encima de la imagen */
+    z-index: 10; 
+    
+    /* Evita que el texto se pueda seleccionar */
+    user-select: none;
+    pointer-events: none; 
+}
+/* 1. Definición de la animación de flotación */
+@keyframes flotar {
+    0% {
+        transform: translate(-50%, 0px); /* Posición inicial */
+    }
+    50% {
+        transform: translate(-50%, -15px); /* Sube 15 píxeles */
+    }
+    100% {
+        transform: translate(-50%, 0px); /* Regresa a la posición inicial */
+    }
+}
+
+/* 2. Aplicación de la animación a la clase texto-tocar */
+.texto-tocar {
+    position: absolute;
+    bottom: 50px; /* Distancia desde abajo */
+    left: 50%;
+    
+    /* Llamamos a la animación */
+    animation: flotar 3s ease-in-out infinite;
+    
+    /* Estilos visuales */
+    color: white;
+    font-family: sans-serif;
+    font-size: 1.1rem;
+    text-align: center;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    width: 100%;
+    pointer-events: none; /* Asegura que el clic pase a través del texto */
+    z-index: 10;
+}
 </style>
 </head>
 <body>
- <div id="preloader">
+<div id="preloader">
     <img src="2.png" alt="Portada" class="preloader-full">
+
+    <div class="texto-tocar">
+        Abrir Invitación
+    </div>
 </div>
 <section class="foto-inicio">
-    <img src="4.jpg.jpeg" alt="Joe y Elisa">
+    <img src="4.jpg.png" alt="Joe y Elisa" class="foto-entrada-celular">
 </section>
 
     <audio id="musica-boda" loop>
         <source src="musica.mp3" type="audio/mpeg">
     </audio>
-<div class="seccion-padres reveal" style="padding: 60px 30px; text-align: center; background-color: #ffffff;">
+<!--
+    <div class="seccion-padres reveal" style="padding: 60px 30px; text-align: center; background-color: #ffffff;">
 
     <div class="divisor-elegante" style="width: 50px; height: 1px; background-color: #8d7a64; margin: 0 auto 25px; opacity: 0.6;"></div>
 
@@ -1029,129 +1114,233 @@
     <div class="divisor-elegante" style="width: 50px; height: 1px; background-color: #8d7a64; margin: 25px auto 0; opacity: 0.6;"></div>
 
 </div>
+
 <section class="foto-inicio">
     <img src="3000.png" alt="Joe y Elisa">
 </section>
-<div class="seccion-padres reveal" style="padding: 60px 80px; text-align: center; background-color: #ffffff;">
-    
-    <div style="margin-bottom: 30px;">
-       <p style="font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px; color: #8d7a64; font-weight: 600;">
-    Con la bendición de Dios
-    y nuestros padres
-</p>
-    <div class="divisor-elegante" style="width: 50px; height: 1px; background-color: #8d7a64; margin: 0 auto 25px; opacity: 0.6;"></div>
+-->
 
-        
-        <p style="font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; color: #8d7a64;">
-            Padres del Novio
-        </p>
-        
-        <p style="font-family: 'Montserrat', sans-serif; font-size: 0.85rem; line-height: 1.6; color: #5d4936;">
-            Alejandro Quinteros y Rose Pella
-        </p>
-    </div>
-
-    <div>
-        <p style="font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; color: #8d7a64;">
-            Padres de la Novia
-        </p>
-        
-        <p style="font-family: 'Montserrat', sans-serif; font-size: 0.85rem; line-height: 1.6; color: #5d4936;">
-            Orlando Iza y Sulema Chulde
-        </p>
-    </div>
-    <div class="divisor-elegante" style="width: 50px; height: 1px; background-color: #8d7a64; margin: 25px auto 0; opacity: 0.6;"></div>
-
-   <div style="margin-top: 30px;">
-    <p style="font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.6; color: #5d4936; font-weight: 500; letter-spacing: 1px;">
-        Josué y Diana
-    </p>
-</div>
-
-</div>
-
-    <div class="divisor-elegante" style="
-        width:50px;
-        height:1px;
-        background-color:#8d7a64;
-        margin:25px auto 0;
-        opacity:0.6;">
-    </div>
-
-</div>
-<section class="foto-inicio">
-    <img src="9100.jpeg" alt="Joe y Elisa">
-</section>
     <div class="header-section">
         <div class="music-player" id="boton-musica">
             <div class="play-button"></div>
         </div>
         <p class="cursive">¡Nos casamos!</p>
-        <h1 class="nombres-tit">Joe & Elisa</h1>
+        <h1 class="nombres-tit">Josué & Diana</h1>
 
     </div>
 
     <div class="escena-invitacion">
         <div class="sobre-container">
             
-            <div class="iniciales-dd">J E</div>
+            <div class="iniciales-dd">J D</div>
             <img src="sobre.png" class="sobre-img" alt="Sobre">
             <img src="sello.png" class="sello-lacre" alt="Sello">
             <div class="tarjeta-blanca">
-                <p class="lema">EL AMOR NO BUSCA SER PERFECTO, BUSCA SER REAL Y PARA SIEMPRE</p>
-                <h2 class="nombre-tarjeta">Joe & Elisa</h2>
+                <p class="lema">HEMOS DECIDIDO DECIR SÍ PARA TODA LA VIDA</p>
+                <h2 class="nombre-tarjeta">Josué & Diana</h2>
                 <p class="honor">Tenemos el honor de invitarlos a celebrar nuestro matrimonio el día</p>
                 <div class="fecha-wrap">
                     <span class="mes-dia">SÁBADO</span>
-                    <span class="num-grande">15</span>
-                    <span class="mes-dia">AGOSTO</span>
+                    <span class="num-grande">12</span>
+                    <span class="mes-dia">SEPTIEMBRE</span>
                 </div>
                 <p class="year">2026</p>
             </div>
         </div>
     </div>
-<!-- SECCIÓN: PADRES -->
-    <section class="foto-inicio">
-    <img src="5000.png" alt="Joe y Elisa">
+      <section class="foto-inicio">
+    <img src="5000.png" alt="Joe y Elisa" class="foto-entrada-celular">
 </section>
+<!-- SECCIÓN: PADRES -->
+  <!-- CONTENEDOR PRINCIPAL -->
+    <div class="seccion-padres reveal" style="padding: 60px 30px; text-align: center; background-color: #ffffff; font-family: 'Cinzel', serif;">
+
+        <!-- Bloque Superior: Con la bendición -->
+        <div style="margin-bottom: 40px;">
+            <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: #5d4936; line-height: 1.6; letter-spacing: 1px; margin-bottom: 20px;">
+                Con la bendición de Dios y nuestros padres
+            </p>
+            
+            <div class="divisor-elegante" style="width: 50px; height: 1px; background-color: #8d7a64; margin: 0 auto; opacity: 0.6;"></div>
+        </div>
+
+
+        <!-- Bloque Medio: Padres del Novio -->
+        <div style="margin-bottom: 30px;">
+            <p style="font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 15px; color: #8d7a64; font-weight: 600;">
+                Padres del Novio
+            </p>
+            <p style="font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: #5d4936; line-height: 1.6;">
+                Alejandro Quinteros y Rose Pella
+            </p>
+        </div>
+
+        <!-- Bloque Medio: Padres de la Novia -->
+        <div style="margin-bottom: 40px;">
+            <p style="font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 15px; color: #8d7a64; font-weight: 600;">
+                Padres de la Novia
+            </p>
+            <p style="font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: #5d4936; line-height: 1.6;">
+                Orlando Iza y Sulema Chulde
+            </p>
+        </div>
+
+        <!-- Divisor inferior (ya estaba bien, solo ajusté el margen) -->
+        <div class="divisor-elegante" style="width: 50px; height: 1px; background-color: #8d7a64; margin: 0 auto 30px; opacity: 0.6;"></div>
+
+        <!-- Bloque Inferior: Nombres de los Novios -->
+     <!-- BLOQUE INFERIOR: Nombres de los Novios (Estilo Minimalista) -->
+<div style="margin-top: 50px; text-align: center; font-family: 'Cinzel', serif;">
+
+    <!-- Nombre 1 -->
+    <p style="
+        font-size: 1.3rem; 
+        line-height: 1; 
+        color: #5d4936; 
+        letter-spacing: 10px; 
+        text-transform: uppercase; 
+        margin-bottom: 10px; 
+        font-weight: 600;">
+        JOSUÉ
+    </p>
+
+    <!-- Contenedor de la línea divisora y el ampersand -->
+    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 10px; width: 100%; max-width: 300px; margin: 0 auto;">
+        
+        <!-- Línea izquierda -->
+        <div style="flex-grow: 1; height: 0.5px; background-color: #5d4936; opacity: 0.5;"></div>
+        
+        <!-- Ampersand (&) -->
+        <span style="
+            font-family: 'Cormorant Garamond', serif; /* Usamos una serif para el & para que resalte suavemente */
+            font-size: 1rem; 
+            color: #5d4936; 
+            margin: 0 15px; 
+            font-style: italic; 
+            opacity: 0.7;">
+            &
+        </span>
+        
+        <!-- Línea derecha -->
+        <div style="flex-grow: 1; height: 0.5px; background-color: #5d4936; opacity: 0.5;"></div>
+        
+    </div>
+
+    <!-- Nombre 2 -->
+    <p style="
+        font-size: 1.3rem; 
+        line-height: 1; 
+        color: #5d4936; 
+        letter-spacing: 10px; 
+        text-transform: uppercase; 
+        margin-top: 10px; 
+        font-weight: 600;">
+        DIANA
+    </p>
+
+</div>
+
+    </div>
+
     <div class="seccion-eventos-texturizada reveal ">
         <div class="layout-arcos">
             <div class="tarjeta-arco arco-ceremonia">
                 <img src="ceremonia.png" alt="Ceremonia" class="icon-img">
                 <h3 class="cursive-sub">Ceremonia Religiosa</h3>
-                <p class="lugar-tit">Casa De Campo Eventos</p>
-                <p class="direccion">Vía a la Costa km 24, Guayaquil</p>
-                <p class="hora">15:00 hs</p>
-                <a href="https://maps.app.goo.gl/RpxBoKGUEBkySvqNA?g_st=iwb" target="_blank" class="btn-outline">COMO LLEGAR</a>
+                <p class="lugar-tit">La Sole Bodas y Eventos </p>
+                <p class="direccion"> Av. Gral. Rumiñahui S/N, 171103</p>
+                 <p class="direccion"> Quito-Ecuador</p>
+                <p class="hora">11:30 hs</p>
+                <a href="https://maps.app.goo.gl/MsCjdq5A9VKAFFvd9" target="_blank" class="btn-outline">COMO LLEGAR</a>
             </div>
             <div class="tarjeta-arco arco-fiesta">
                 <img src="fiesta.png" alt="Fiesta" class="icon-img">
                 <h3 class="cursive-sub">Recepción</h3>
-                <p class="lugar-tit">Casa De Campo Eventos</p>
-                <p class="direccion">Vía a la Costa km 24, Guayaquil</p>
+                <p class="lugar-tit">La Sole Bodas y Eventos </p>
+                <p class="direccion">Av. Gral. Rumiñahui S/N, 171103 </p>
+                <p class="direccion"> Quito-Ecuador</p>
                 <p class="hora">Luego de la ceremonia religiosa</p>
-                <a href="https://maps.app.goo.gl/RpxBoKGUEBkySvqNA?g_st=iwb" target="_blank" class="btn-outline">COMO LLEGAR</a>
+                <a href="https://maps.app.goo.gl/MsCjdq5A9VKAFFvd9" target="_blank" class="btn-outline">COMO LLEGAR</a>
             </div>
         </div>
     </div>
+<div class="seccion-itinerario">
+    <h2 class="itinerario-titulo">Itinerario</h2>
+    <div class="timeline">
+        
+        <div class="timeline-item">
+            <div class="timeline-icon"><img src="misa.png" alt="Icono"></div>
+            <div class="timeline-content">
+                <p class="timeline-desc">Ceremonia Religiosa</p>
+                <div class="timeline-time">11:30 hs</div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-icon"><img src="recep.png" alt="Icono"></div>
+            <div class="timeline-content">
+                <p class="timeline-desc">Recepción</p>
+                <div class="timeline-time">13:00 hs</div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-icon"><img src="nov.png" alt="Icono"></div>
+            <div class="timeline-content">
+                <p class="timeline-desc">Entrada de los Novios</p>
+                <div class="timeline-time">13:30 hs</div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-icon"><img src="cenas.png" alt="Icono"></div>
+            <div class="timeline-content">
+                <p class="timeline-desc">Buen Provecho (Almuerzo)</p>
+                <div class="timeline-time">14:00 hs</div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-icon"><img src="bailar.png" alt="Icono"></div>
+            <div class="timeline-content">
+                <p class="timeline-desc">¡Momentos para Compartir!</p>
+                <div class="timeline-time">16:00 hs</div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-icon"><img src="fin.png" alt="Icono"></div>
+            <div class="timeline-content">
+                <p class="timeline-desc">Felices por Siempre</p>
+                <div class="timeline-time">20:00 hs</div>
+            </div>
+        </div>
+    </div>
+</div>
 
     <!-- Se omitió la sección de itinerario por falta de detalles específicos de tiempos -->
 <section class="foto-inicio">
-    <img src="6000.png" alt="Joe y Elisa">
+    <img src="7000.png" alt="Joe y Elisa">
 </section>
+
     <div class="seccion-regalos reveal">
         <div class="tarjeta-regalo-cafe">
+            
             <h2 class="regalo-cursive-top">Regalo</h2>
             <img src="regalo.png" alt="Regalo" class="icon-regalo-line">
-            
-            <h4 class="titulo-datos-white">TRANSFERENCIA BANCARIA</h4>
-            <p>AHORROS - BANCO PICHINCHA</p>
-            <p>NÚMERO DE CUENTA: 2202640090</p>
-            <p>TITULAR: Joe Emanuel Calderon Cordero</p>
-            <p>CÉDULA: 0950045773</p>
-
             <h4 class="titulo-datos-white">LLUVIA DE SOBRES</h4>
             <p>Tu presencia es nuestro mejor regalo, pero si deseas darnos un detalle, recibiremos tu sobre cerrado el día de la fiesta.</p>
+            <h4 class="titulo-datos-white">TRANSFERENCIA BANCARIA</h4>
+             <p style="color: #ffffff; font-weight: 800; margin: 6px 0;">Ahorros - Banco de Guayaquil</p>
+            <p style="color: #ffffff; font-weight: 800; margin: 6px 0;">
+    NÚMERO DE CUENTA: <span style="color: #ffffff !important; text-decoration: none !important; pointer-events: none;">24373635</span>
+</p>
+             <p style="color: #ffffff; font-weight: 800; margin: 6px 0;">TITULAR: Diana Yadira Iza Chulde</p>
+          <p style="color: #ffffff; font-weight: 800; margin: 6px 0;">
+    CÉDULA: <span style="color: #ffffff !important; text-decoration: none !important; pointer-events: none;">1720447661 </span>
+</p>
+
+   <p style="color: #ffffff; font-weight: 800; margin: 6px 0;">CORREO:  diany44@hotmail.com</p>         
         </div>
         <div class="tarjeta-dress-blanca reveal">
     <h3>Dress code</h3>
@@ -1189,9 +1378,7 @@
     </div>
 </div>
 </div>
-<section class="foto-inicio">
-    <img src="7000.png" alt="Joe y Elisa">
-</section>
+
     <div class="seccion-interactiva reveal" style="background-image: url('fondo2.png'); background-size: cover; background-position: center; padding: 60px 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
 
         <div class="tarjeta-interactiva" style="width: 310px; background-color: rgb(255, 255, 255); padding: 30px; border-radius: 15px; text-align: center; box-shadow: 0 10px 20px rgba(0,0,0,0.1); display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
@@ -1202,86 +1389,63 @@
 
             <p style="margin-bottom: 25px; color: #666; line-height: 1.6;">Queremos ver la boda a través de tus ojos. Comparte tus momentos favoritos con nosotros.</p>
 
-            <a href="https://drive.google.com/drive/folders/1qvEqXNWoiVUqco8Nx06wMKDPesaSvDkV?usp=sharing" target="_blank" class="btn-interactivo" style="background-color: #8d7a64; color: white; padding: 12px 24px; border-radius: 30px; text-decoration: none; font-weight: bold; transition: background-color 0.3s ease;">SUBIR FOTOS</a>
+            <a href="https://drive.google.com/drive/folders/1sZyCtX5Tdg5Tyqan-nBZTTMMU2URaMy8?usp=sharing" target="_blank" class="btn-interactivo" style="background-color: #8d7a64; color: white; padding: 12px 24px; border-radius: 30px; text-decoration: none; font-weight: bold; transition: background-color 0.3s ease;">SUBIR FOTOS</a>
 
         </div>
 
-
-
-
-
-   
-
-</div>
-
-    </div>
-
-
-
-  <div class="seccion-galeria" style="width: 100%; padding: 60px 0; background-color: #ffffff; text-align: center;">
+<div class="seccion-galeria" style="width: 100%; padding: 60px 0; background-color: #ffffff; text-align: center; overflow: hidden;">
 
     <h2 class="itinerario-titulo" style="margin-bottom: 40px; font-family: 'Alex Brush', cursive; font-size: 2.2rem; color: #8d7a64;">Nuestra Historia</h2>
 
+    <!-- Contenedor del carrusel (ahora con cursor de agarre) -->
+    <div class="carrusel-wrapper" style="position: relative; max-width: 1200px; margin: 0 auto; padding: 0 20px; cursor: grab;">
+        
+        <!-- Ventana de visualización -->
+        <div class="carrusel-contenedor" style="width: 100%; overflow: hidden;">
+            
+            <!-- Riel que contiene las fotos -->
+            <div id="carrusel-track" style="display: flex; gap: 15px; width: max-content; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); user-select: none;">
+                  <div class="foto-item" style="width: 280px; height: 280px; flex-shrink: 0; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.08);">
+                    <img src="1.png" alt="Nuestra foto 4" style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;">
+                </div>
+                <!-- Foto 1 -->
+                <div class="foto-item" style="width: 280px; height: 280px; flex-shrink: 0; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.08);">
+                    <img src="8000.png" alt="Nuestra foto 1" style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;">
+                </div>
+                
+                <!-- Foto 2 -->
+                <div class="foto-item" style="width: 280px; height: 280px; flex-shrink: 0; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.08);">
+                    <img src="9000.jpeg" alt="Nuestra foto 2" style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;">
+                </div>
+                
+                <!-- Foto 3 -->
+                <div class="foto-item" style="width: 280px; height: 280px; flex-shrink: 0; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.08);">
+                    <img src="4000.png" alt="Nuestra foto 3" style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;">
+                </div>
+                
+                <!-- Foto 4 -->
+                <div class="foto-item" style="width: 280px; height: 280px; flex-shrink: 0; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.08);">
+                    <img src="3.jpeg" alt="Nuestra foto 4" style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;">
+                </div>
+                
+                <!-- Foto 6 -->
+                <div class="foto-item" style="width: 280px; height: 280px; flex-shrink: 0; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.08);">
+                    <img src="2000.png" alt="Nuestra foto 6" style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;">
+                </div>
+                  <div class="foto-item" style="width: 280px; height: 280px; flex-shrink: 0; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.08);">
+                    <img src="9100.jpeg" alt="Nuestra foto 4" style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
    
 
-    <div class="galeria-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; max-width: 1000px; margin: 0 auto; padding: 0 20px;">
-
-       
-
-        <!-- Foto 1 -->
-
-        <div class="foto-item reveal" style="width: 280px; height: 280px; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
-
-            <img src="8000.png" alt="Nuestra foto 1" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-
-        </div>
-
-       
-
-        <!-- Foto 2 -->
-
-        <div class="foto-item reveal" style="width: 280px; height: 280px; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
-
-            <img src="9000.jpeg" alt="Nuestra foto 2" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-
-        </div>
-
-       
-
-        <!-- Foto 3 -->
-
-        <div class="foto-item reveal" style="width: 280px; height: 280px; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
-
-            <img src="4000.png" alt="Nuestra foto 3" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-
-        </div>
-
-       
-
-        <!-- Foto 4 -->
-
-        <div class="foto-item reveal" style="width: 280px; height: 280px; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
-
-            <img src="3.jpeg" alt="Nuestra foto 4" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-
-        </div>
-
-    
-       
-
-        <!-- Foto 6 -->
-
-        <div class="foto-item reveal" style="width: 280px; height: 280px; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
-
-            <img src="2000.png" alt="Nuestra foto 6" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-
-        </div>
-
-
-
-    </div>
-
-</div>
     <div class="seccion-pases reveal" style="padding: 50px 20px; background-color: #ffffff; text-align: center;">
         <div style="max-width: 450px; margin: 0 auto; border: 1px dashed #8d7a64; padding: 30px; border-radius: 15px; background-image:url('fondo100.png');; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
             <h3 style="font-family: 'Alex Brush', cursive; font-size: 2rem; color: #8d7a64; margin-bottom: 10px;">Invitación Personalizada</h3>
@@ -1331,10 +1495,10 @@
 
             <h2>Confirmación de asistencia</h2>
 
-            <p style="text-align: justify;">Para nosotros es indispensable contar con tu valiosa presencia. Agradecemos confirmar tu asistencia lo antes posible.</p>
+            <p style="color: #ffffff; font-weight: 600; margin: 6px 0;" style="text-align: justify;">Para nosotros es indispensable contar con tu valiosa presencia. Agradecemos confirmar tu asistencia lo antes posible.</p>
            <div id="contenedor-confirmar">
 
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLScLhxYE25HKKzzY6-pC1qK5skY_XwA8M2kGrOT1kIwptk64Rg/viewform?usp=dialog"
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfjTkooOogk_cTyis_vtFbQhLDiTX6n42rCl6875Yuy6vVi6A/viewform?usp=publish-editor"
 
        target="_blank"
 
@@ -1349,23 +1513,18 @@
         </div>
 
     </div>
-<section class="video-inicio">
-    <video autoplay muted loop playsinline>
-        <source src="IMG_0031 (3).mp4" type="video/mp4">
-        Tu navegador no soporta el video.
-    </video>
-</section>
+
 
     <div class="seccion-final reveal">
         <div class="divisor-elegante"></div>
         <p class="texto-final">Te esperamos</p>
-        <h2 class="firmas-final">Joe & Elisa</h2>
+        <h2 class="firmas-final">Josué & Diana</h2>
         <p class="agradecimiento">¡Gracias por formar parte de nuestra historia!</p>
     </div>
 
   <div class="creditos" style="text-align: center; padding: 20px; color: #888;">
    
-    <a href="https://wa.me/593960934663" target="_blank" style="color: #8d7a64; text-decoration: none; font-weight: bold;">
+    <a href="https://wa.me/593960934663" target="_blank" style="color: #000000; text-decoration: none; font-weight: bold;">
          Realizado por  Invitaciones Digitales Loja    / 0960934663
     </a> 
  
@@ -1436,7 +1595,7 @@
         }
 
         // CONTADOR 
-       const weddingDate = new Date("August 15, 2026 15:00:00").getTime();
+ const weddingDate = new Date("September 12, 2026 15:00:00").getTime();
         const updateCountdown = () => {
             const now = new Date().getTime();
             const distance = weddingDate - now;
@@ -1548,6 +1707,127 @@ if(nombre){
 if(cantidad){
     document.getElementById("num-pases").innerText = cantidad;
 }
+
+
+
+
+    const wrapper = document.querySelector('.carrusel-wrapper');
+    const track = document.getElementById('carrusel-track');
+    
+    let posicionActual = 0;
+    const desplazarAncho = 295; // 280px (foto) + 15px (gap)
+    const tiempoAutoPlay = 2000; // Ajustado a 1 segundo automáticamente
+    let autoPlay;
+
+    // Variables para el arrastre (Swipe / Drag)
+    let isDragging = false;
+    let startX = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+
+    function obtenerMaxDesplazamiento() {
+        const contenedorAncho = track.parentElement.getBoundingClientRect().width;
+        const trackAncho = track.scrollWidth;
+        return Math.max(0, trackAncho - contenedorAncho);
+    }
+
+    function moverCarruselSiguiente() {
+        const maxDesplazamiento = obtenerMaxDesplazamiento();
+        if (maxDesplazamiento > 0) {
+            if (Math.abs(posicionActual) >= maxDesplazamiento) {
+                posicionActual = 0; 
+            } else {
+                posicionActual -= desplazarAncho;
+                // Evita que se pase del límite exacto
+                if (Math.abs(posicionActual) > maxDesplazamiento) {
+                    posicionActual = -maxDesplazamiento;
+                }
+            }
+            prevTranslate = posicionActual;
+            setTrackPosition(posicionActual);
+        }
+    }
+
+    function startAutoPlay() {
+        autoPlay = setInterval(moverCarruselSiguiente, tiempoAutoPlay);
+    }
+
+    function stopAutoPlay() {
+        clearInterval(autoPlay);
+    }
+
+    function setTrackPosition(position) {
+        track.style.transform = `translateX(${position}px)`;
+    }
+
+    // --- EVENTOS PARA DESLIZAR CON EL DEDO O RATÓN ---
+
+    function startDrag(e) {
+        isDragging = true;
+        stopAutoPlay();
+        startX = obtenerPosicionX(e);
+        track.style.transition = 'none'; // Quita la transición para respuesta inmediata al dedo
+        wrapper.style.cursor = 'grabbing';
+    }
+
+    function drag(e) {
+        if (!isDragging) return;
+        const currentX = obtenerPosicionX(e);
+        const contenedorAncho = track.parentElement.getBoundingClientRect().width;
+        const maxDesplazamiento = obtenerMaxDesplazamiento();
+        
+        // Calcular cuánto se ha movido el dedo
+        const diffX = currentX - startX;
+        currentTranslate = prevTranslate + diffX;
+
+        // Límites para que no se arrastre infinitamente hacia los lados vacíos
+        if (currentTranslate > 0) currentTranslate = currentTranslate * 0.3; // Resistencia al inicio
+        if (currentTranslate < -maxDesplazamiento) {
+            currentTranslate = -maxDesplazamiento + (currentTranslate + maxDesplazamiento) * 0.3; // Resistencia al final
+        }
+
+        setTrackPosition(currentTranslate);
+    }
+
+    function endDrag() {
+        if (!isDragging) return;
+        isDragging = false;
+        wrapper.style.cursor = 'grab';
+        track.style.transition = 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)';
+
+        const maxDesplazamiento = obtenerMaxDesplazamiento();
+
+        // Ajustar la posición final al ítem más cercano (Snap)
+        posicionActual = Math.round(currentTranslate / desplazarAncho) * desplazarAncho;
+        
+        // Mantener dentro de los límites reales
+        if (posicionActual > 0) posicionActual = 0;
+        if (posicionActual < -maxDesplazamiento) posicionActual = -maxDesplazamiento;
+
+        prevTranslate = posicionActual;
+        setTrackPosition(posicionActual);
+        
+        // Reinicia el autoplay después de interactuar
+        startAutoPlay();
+    }
+
+    function obtenerPosicionX(e) {
+        return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+    }
+
+    // Listeners para pantallas táctiles (Móviles)
+    wrapper.addEventListener('touchstart', startDrag, { passive: true });
+    wrapper.addEventListener('touchmove', drag, { passive: true });
+    wrapper.addEventListener('touchend', endDrag);
+
+    // Listeners para ratón (Escritorio)
+    wrapper.addEventListener('mousedown', startDrag);
+    wrapper.addEventListener('mousemove', drag);
+    wrapper.addEventListener('mouseup', endDrag);
+    wrapper.addEventListener('mouseleave', endDrag);
+
+    // Iniciar el carrusel automáticamente al cargar
+    startAutoPlay();
 
     </script>
 
